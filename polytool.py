@@ -45,6 +45,7 @@ def sort_and_match(L, mask):
         for s in itertools.combinations(T,2):
             J.append((s[0][0] ^ s[1][0], s[0][1] + s[1][1]))
         i = j
+        if len(J) > 2*len(L): return sorted(J, key=get_key_mask2) 
     return sorted(J, key=get_key_mask2)
 
 # pick an random mask satisfying with d_p/3 bits set
@@ -71,9 +72,9 @@ print "POLYTOOL v0.1\tCarl Londahl 2014, grocid.net\n" + "-"*60
 print "\nPolynomial (deg "+str(degree)+") :\t",
 print_poly(poly)
 
-print "\n[+] Generating initial list..."
+print "\n[+] Generating initial list... (~ 2^"+str((degree/3+3)),"samples needed)"
 mask1,mask2 = adjust_mask(degree)
-L = gen_multiples(2**20, poly, degree)
+L = gen_multiples(2**(degree/3+3), poly, degree)
 print "[*]", len(L), "entries generated."
 
 it = True
