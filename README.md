@@ -1,5 +1,5 @@
 # Polytool
-Polytool is a python program designed to find weight-4 polynomial multiples of LFSR feedback polynomials. It is based on Algorithm 11 given here [here][http://lup.lub.lu.se/luur/download?func=downloadFile&recordOId=4934002&fileOId=4934007]. Preferably, this program should be run with `pypy`.
+Polytool is a python program designed to find weight-4 polynomial multiples of LFSR feedback polynomials. It is based on Algorithm 11 given in [1]. Preferably, this program should be run with `pypy`.
 
 ### Usage
 
