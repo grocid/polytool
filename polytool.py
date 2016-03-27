@@ -67,15 +67,15 @@ def print_poly(p):
 
 degree = int(math.log(poly)/math.log(2))
 
-print "\n" + "-"*60
-print "POLYTOOL v0.1\tCarl Londahl 2014, grocid.net\n" + "-"*60
+
+print "Polytool v0.12,\tCarl Londahl 2014, grocid.net"
 print "\nPolynomial (deg "+str(degree)+") :\t",
 print_poly(poly)
 
-print "\n[+] Generating initial list... (~ 2^"+str((degree/3+3)),"samples needed)"
+print "\n[ ] Generating initial list... (~ 2^"+str((degree/3+3)),"samples needed)"
 mask1,mask2 = adjust_mask(degree)
 L = gen_multiples(2**(degree/3+3), poly, degree)
-print "[*]", len(L), "entries generated."
+print "[+]", len(L), "entries generated."
 
 it = True
 its = 0
@@ -83,7 +83,7 @@ while it:
     its += 1
     L.sort(key=get_key_mask1)
     L1 = sort_and_match(L, mask1)
-    print "[*]", len(L1), "surviving entries using mask", hex(mask1), "("+str(its)+" iterations)"
+    print "[ ]", len(L1), "surviving entries using mask", hex(mask1), "("+str(its)+" iterations)"
     L1 = sort_and_match(L1, mask2)
     L1.sort(key=max_deg)
     mask1,mask2 = adjust_mask(degree)
@@ -93,7 +93,7 @@ while it:
         e = sorted(L1[0][1])
         mm = min(e)
         print "    x^" + str(e[3]-mm) + "+x^" + str(e[2]-mm)+ "+x^" + str(e[1]-mm) + "+1"
-    else: it = True
-    
-print "\n" + "-"*60 + "\n"
+    else: 
+        it = True
+        print "[-] No candidates found. Updating masking and rerunning second step."
 
